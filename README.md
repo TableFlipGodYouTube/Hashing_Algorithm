@@ -1,2 +1,2 @@
-# Hashing_Algorithm
+# CustomHashingAlg
 Created with CodeSandbox
