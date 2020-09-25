@@ -94,8 +94,8 @@ function generateHash(salt) {
   if (salt != null) {
     for (var i = 0; i < salt.length; i++) {
       let temp = "";
-      if (letters.indexOf(salt[i]) * 2 > letters.length) {
-        temp = letters.indexOf(salt[i]) * 2 - letters.length;
+      if (letters.indexOf(salt[i]) * 4 > letters.length) {
+        temp = letters.indexOf(salt[i]) * 4 - letters.length;
         //console.log("Temp: " + temp);
         while (temp > letters) {
           temp = temp - letters.length;
@@ -103,7 +103,7 @@ function generateHash(salt) {
         }
         //console.log("newdata: " + temp);
       } else {
-        temp = letters.indexOf(salt[i]) * 2;
+        temp = letters.indexOf(salt[i]) * 4;
         //console.log("Ok: " + salt[i] + " - " + temp);
       }
       hashedsalt = hashedsalt + letters[temp];
@@ -117,8 +117,8 @@ function encodet(f) {
   let final = "";
   for (var ii = 0; ii < f.length; ii++) {
     let temp = "";
-    if (letters.indexOf(f[ii]) * 2 > letters.length) {
-      temp = letters.indexOf(f[ii]) * 2 - letters.length;
+    if (letters.indexOf(f[ii]) * 4 > letters.length) {
+      temp = letters.indexOf(f[ii]) * 4 - letters.length;
       //console.log("Temp: " + temp);
       while (temp > letters) {
         temp = temp - letters.length;
@@ -126,7 +126,7 @@ function encodet(f) {
       }
       //console.log("newdata: " + temp);
     } else {
-      temp = letters.indexOf(f[ii]) * 2;
+      temp = letters.indexOf(f[ii]) * 4;
       //console.log("Ok: " + f[ii] + " - " + temp);
     }
     final = final + letters[temp];

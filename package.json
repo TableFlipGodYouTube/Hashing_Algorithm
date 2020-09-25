@@ -1,7 +1,7 @@
 {
-  "name": "tableflipgod-hashing-algorithm",
+  "name": "hashing-algorithm",
   "version": "1.0.0",
-  "description": "",
+  "description": "One way secure but inefficient hashing algorithm for text, a-Z 1-9 and special characters \"~-)\"",
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
