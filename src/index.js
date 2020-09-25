@@ -149,4 +149,4 @@ function encode(f, salt) {
   return final;
 }
 
-console.log("Hashed with salt " + encode("yes", generateHash("cool")));
+console.log("Hashed with salt " + encode("yes", encodet(generateHash(" "))));
