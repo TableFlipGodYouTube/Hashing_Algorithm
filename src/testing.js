@@ -61,7 +61,7 @@ const letters = [
   "!",
   "`",
   "~",
-  " ",
+  "%20",
   '"',
   "'",
   ";",
@@ -107,17 +107,24 @@ function encodet(f) {
   let final = "";
   for (var ii = 0; ii < f.length; ii++) {
     let temp = "";
-    if (parsedLetters.indexOf(f[ii]) * 4 > parsedLetters.length) {
-      temp = parsedLetters.indexOf(f[ii]) * 4 - parsedLetters.length;
-      //console.log("Temp: " + temp);
-      while (temp > parsedLetters / 2) {
-        temp = temp - parsedLetters.length;
-        //console.log("Overflow temp: " + temp);
+    if (f[ii] === " ") {
+      if (parsedLetters.indexOf("%20") * 4 > parsedLetters.length) {
+        temp = parsedLetters.indexOf("%20") * 4 - parsedLetters.length;
+        while (temp > parsedLetters / 2) {
+          temp = temp - parsedLetters.length;
+        }
+      } else {
+        temp = parsedLetters.indexOf("%20") * 4;
       }
-      //console.log("newdata: " + temp);
     } else {
-      temp = parsedLetters.indexOf(f[ii]) * 4;
-      //console.log("Ok: " + f[ii] + " - " + temp);
+      if (parsedLetters.indexOf(f[ii]) * 4 > parsedLetters.length) {
+        temp = parsedLetters.indexOf(f[ii]) * 4 - parsedLetters.length;
+        while (temp > parsedLetters / 2) {
+          temp = temp - parsedLetters.length;
+        }
+      } else {
+        temp = parsedLetters.indexOf(f[ii]) * 4;
+      }
     }
     final = final + parsedLetters[temp];
   }
@@ -128,22 +135,19 @@ function decodet(f) {
   let final = "";
   for (var ii = 0; ii < f.length; ii++) {
     let temp = "";
-    if (parsedLetters.indexOf(f[ii]) / 2 > parsedLetters.length) {
+    if (parsedLetters.indexOf(f[ii]) * 2 > parsedLetters.length) {
       temp = parsedLetters.indexOf(f[ii]) / 2 + parsedLetters.length;
-      //console.log("Temp: " + temp);
-      while (temp > parsedLetters / 2) {
+      while (temp > parsedLetters * 2) {
         temp = temp - parsedLetters.length;
-        //console.log("Overflow temp: " + temp);
       }
-      //console.log("newdata: " + temp);
     } else {
       temp = parsedLetters.indexOf(f[ii]) / 2;
-      //console.log("Ok: " + f[ii] + " - " + temp);
     }
     final = final + letters[temp];
   }
   return final;
 }
-let codec = encodet(" ");
+let codec = encodet("ok");
 console.log(codec);
+console.log(" ");
 console.log(decodet(codec));
