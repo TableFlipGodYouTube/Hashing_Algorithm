@@ -119,7 +119,7 @@ function encodet(f) {
     } else {
       if (parsedLetters.indexOf(f[ii]) * 4 > parsedLetters.length) {
         temp = parsedLetters.indexOf(f[ii]) * 4 - parsedLetters.length;
-        while (temp > parsedLetters / 2) {
+        while (temp > parsedLetters / 4) {
           temp = temp - parsedLetters.length;
         }
       } else {
@@ -135,19 +135,19 @@ function decodet(f) {
   let final = "";
   for (var ii = 0; ii < f.length; ii++) {
     let temp = "";
-    if (parsedLetters.indexOf(f[ii]) * 2 > parsedLetters.length) {
-      temp = parsedLetters.indexOf(f[ii]) / 2 + parsedLetters.length;
-      while (temp > parsedLetters * 2) {
-        temp = temp - parsedLetters.length;
+    if (parsedLetters.indexOf(f[ii]) / 4 > parsedLetters.length) {
+      temp = parsedLetters.indexOf(f[ii]) / 4 + parsedLetters.length;
+      while (temp > parsedLetters / 4) {
+        temp = temp + parsedLetters.length;
       }
     } else {
-      temp = parsedLetters.indexOf(f[ii]) / 2;
+      temp = parsedLetters.indexOf(f[ii]) / 4;
     }
-    final = final + letters[temp];
+    final = final + parsedLetters[temp];
   }
   return final;
 }
-let codec = encodet("ok");
+let codec = encodet("cool");
 console.log(codec);
 console.log(" ");
 console.log(decodet(codec));
